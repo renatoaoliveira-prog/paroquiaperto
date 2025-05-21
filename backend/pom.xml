@@ -15,6 +15,7 @@
     <version>2.7.5</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+  
 
   <dependencies>
   <dependency>
@@ -45,12 +46,19 @@
 -->
 
   <!-- Se for usar PostgreSQL no lugar do H2, remova o H2 e adicione: -->
+  <!--
   <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <scope>runtime</scope>
   </dependency>
-  
+  -->
+  <dependency>
+  <groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+  <version>42.5.0</version>
+
+</dependency>
   </dependencies>
 
   <build>

@@ -1,0 +1,36 @@
+.paroquia-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.paroquia-card-conteudo {
+  flex-grow: 1;
+}
+
+.paroquia-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.paroquia-card p {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.paroquia-card p svg {
+  margin-right: 6px;
+}
+
+.paroquia-card span {
+  font-weight: bold;
+  color: #2c7a7b;
+}

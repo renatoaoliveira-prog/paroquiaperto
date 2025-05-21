@@ -1,84 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
-// Corrigir problema de ícone padrão no Leaflet com React
+// corrige ícones padrão do Leaflet no React
 delete L.Icon.Default.prototype._getIconUrl;
-
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
-    "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png",
-  iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png",
+    'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
 });
 
-const paroquiasMock = [
-  {
-    id: 1,
-    nome: "Paróquia de São Nicolau",
-    lat: 41.1459,
-    lng: -8.6110,
-  },
-  {
-    id: 2,
-    nome: "Paróquia de Cedofeita",
-    lat: 41.1543,
-    lng: -8.6280,
-  },
-  {
-    id: 3,
-    nome: "Paróquia da Sé do Porto",
-    lat: 41.1425,
-    lng: -8.6113,
-  },
-];
-
-export default function Mapa() {
-  const [posicao, setPosicao] = useState(null);
+export default function Mapa({ paroquias, coords }) {
+  const [center, setCenter] = useState([41.14961, -8.61099]); // Porto centro
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      alert("Geolocalização não suportada pelo navegador.");
-      return;
+    if (coords) {
+      setCenter([coords.latitude, coords.longitude]);
     }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setPosicao({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        });
-      },
-      () => {
-        alert("Não foi possível obter sua localização.");
-      }
-    );
-  }, []);
-
-  // Se não tem posição do usuário ainda, mostra um texto ou spinner
-  if (!posicao) return <p>Carregando mapa e localização...</p>;
+  }, [coords]);
 
   return (
     <MapContainer
-      center={[posicao.lat, posicao.lng]}
+      center={center}
       zoom={13}
-      style={{ height: "500px", width: "100%" }}
-      scrollWheelZoom={false}
+      style={{ height: '300px', width: '100%', borderRadius: '8px' }}
+      scrollWheelZoom
     >
       <TileLayer
         attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {/* Marcador da posição do usuário */}
-      <Marker position={[posicao.lat, posicao.lng]}>
-        <Popup>Sua localização</Popup>
-      </Marker>
+      {/* Marcador do usuário */}
+      {coords && (
+        <Marker position={[coords.latitude, coords.longitude]}>
+          <Popup>Sua localização</Popup>
+        </Marker>
+      )}
 
-      {/* Marcadores das paroquias */}
-      {paroquiasMock.map((p) => (
+      {/* Marcadores das paróquias */}
+      {paroquias.map(p => (
         <Marker key={p.id} position={[p.lat, p.lng]}>
-          <Popup>{p.nome}</Popup>
+          <Popup>
+            <strong>{p.nome}</strong><br/>
+            {p.endereco}<br/>
+            {p.distancia && `${p.distancia.toFixed(1)} km`}
+          </Popup>
         </Marker>
       ))}
     </MapContainer>

@@ -1,5 +1,22 @@
-.paroquia-distancia {
-  color: #4b5563;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+.paroquias-page {
+  max-width: 960px;
+  margin: 100px auto 40px;
+  padding: 0 16px;
+}
+
+.paroquias-title {
+  font-size: 1.75rem;
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.paroquias-mapa {
+  margin-bottom: 32px;
+}
+
+.paroquias-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }

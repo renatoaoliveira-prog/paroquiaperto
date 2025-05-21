@@ -1,22 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'; // ajuste o caminho se necessário
 
-const Navbar = () => {
-  return (
-    <nav className="bg-white shadow px-6 py-4 flex justify-between items-center">
-      <Link to="/" className="text-xl font-bold text-blue-600">
-        Paróquia Perto
+const Navbar = () => (
+  <header className="navbar">
+    <div className="navbar-inner">
+      <Link to="/" className="navbar-logo">
+        <img src={logo} alt="Paróquia Perto" />
       </Link>
-      <div className="space-x-4">
-        <Link to="/" className="text-gray-700 hover:text-blue-600">
-          Início
-        </Link>
-        <Link to="/paroquias" className="text-gray-700 hover:text-blue-600">
-          Paróquias
-        </Link>
-      </div>
-    </nav>
-  )
-}
+      <nav className="navbar-nav">
+        <Link to="/" className="navbar-link">Início</Link>
+        <Link to="/paroquias" className="navbar-link">Paróquias</Link>
+        <Link to="/contato" className="navbar-link">Contato</Link>
+      </nav>
+    </div>
+  </header>
+);
 
-export default Navbar
+export default Navbar;

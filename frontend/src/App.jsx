@@ -1,21 +1,25 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Paroquias from './pages/Paroquias'
-import ParoquiaDetalhe from './pages/ParoquiaDetalhe'
-import Navbar from './components/Navbar'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Paroquias from './pages/Paroquias';
+import Contato from './pages/Contato';
+import './styles/Navbar.css';
 
-const App = () => {
+function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/paroquias" element={<Paroquias />} />
-        <Route path="/paroquia/:id" element={<ParoquiaDetalhe />} />
-      </Routes>
-    </div>
-  )
+      <main style={{ paddingTop: '64px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/paroquias" element={<Paroquias />} />
+          <Route path="/contato" element={<Contato />} />
+          {/* outras rotas */}
+        </Routes>
+      </main>
+    </>
+  );
 }
 
-export default App
+export default App;

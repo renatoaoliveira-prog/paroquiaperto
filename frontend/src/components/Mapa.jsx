@@ -47,6 +47,7 @@ export default function Mapa({ paroquias, coords }) {
             <strong>{p.nome}</strong><br/>
             {p.endereco}<br/>
             {p.distancia && `${p.distancia.toFixed(1)} km`}
+            
           </Popup>
         </Marker>
       ))}

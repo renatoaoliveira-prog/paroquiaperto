@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Paroquias from './pages/Paroquias';
 import Contato from './pages/Contato';
-
+import './assets/logo.png';
 
 function App() {
   return (

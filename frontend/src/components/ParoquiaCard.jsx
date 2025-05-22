@@ -7,7 +7,7 @@ import withReactContent from 'sweetalert2-react-content'
 export default function ParoquiaCard({ dados }) {
   const MySwal = withReactContent(Swal);
   const handleClick = () => {
-  const { nome, imagem, endereco, distancia, horarios, descricao, contato, site, whatsapp, instagram, facebook } = dados;
+  const { nome, imagem, endereco, distancia, horarios, descricao, contato, email, site, whatsapp, instagram, facebook } = dados;
 
     const html = `
       ${imagem ? `<img src="${imagem}" alt="${nome}" />` : ''}
@@ -16,7 +16,7 @@ export default function ParoquiaCard({ dados }) {
       ${horarios ? `<p><strong>Horários:</strong></p><p>${horarios.join('<br>')}</p>` : ''}
       ${descricao ? `<p><strong>Descrição:</strong> ${descricao}</p>` : ''}
       ${contato ? `<p><strong>Contato:</strong> ${contato}</p>` : ''}
-      ${contato ? `<p><strong>Email:</strong> ${contato}</p>` : ''}
+      ${email ? `<p><strong>Email:</strong> <a href="mailto:${email}" style="color: #545454; text-decoration: none;">${email}</a></p>` : ''}
       ${site ? `<p><strong>Site:</strong> <a href="${site}" target="_blank" style="color: #545454; text-decoration: none;">${site}</a></p>` : ''}
       
       ${(whatsapp || instagram || facebook) ? `<p><strong>Redes sociais:</strong></p>
@@ -49,7 +49,7 @@ export default function ParoquiaCard({ dados }) {
     `;
 
       MySwal.fire({
-        title: <strong>Paróquia {nome}</strong>,
+        title: <strong>{nome}</strong>,
         html,
         confirmButtonText: 'Fechar'
       });

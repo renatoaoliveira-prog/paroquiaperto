@@ -1,0 +1,15 @@
+/* BackofficeLayout.css */
+.backoffice-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+}
+
+.backoffice-content {
+  margin-left: 220px; /* mesma largura do menu */
+  padding: 2rem;
+  flex: 1;
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}

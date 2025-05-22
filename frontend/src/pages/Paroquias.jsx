@@ -68,7 +68,7 @@ const Paroquias = () => {
             dados={{
               
               distancia: p.distancia ? p.distancia.toFixed(1) : '-',
-              nomeIgreja: p.nomeIgreja,
+              nomeIgreja: p.nomeIgreja ? p.nomeIgreja : 'UNDEFINED',
               nome: p.nome,
               endereco: p.endereco,
               descricao: p.descricao,

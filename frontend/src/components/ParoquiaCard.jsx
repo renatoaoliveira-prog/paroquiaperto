@@ -75,18 +75,17 @@ export default function ParoquiaCard({ dados }) {
             <p key={index} className="paroquia-horario">{horario}</p>
           ))
         }
-         
+      </div>
+
+      <div className='saberMaisAreaButton'>
         <div className='saberMais'>
             <button className="saberMais-button" onPointerDown={handleClick}>Ver mais</button>
         </div>
-       
-      
       </div>
-
-      
+     
 
     </div>
-     
+   
     </>
   );
 }

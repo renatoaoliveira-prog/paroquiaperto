@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.paroquia-card-interno {
+  width: 100%;
+}
+
 .paroquia-card-conteudo {
   flex-grow: 1;
 }
@@ -34,3 +38,40 @@
   font-weight: bold;
   color: #2c7a7b;
 }
+
+.saberMais{
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.saberMais-button {
+  background-color: #273E54;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SaberMais-button:hover {
+  background-color: #EEC651;
+}
+
+.swal2-html-container img {
+  width: 100%; 
+  max-width: 337px;
+}
+
+.swal2-confirm{
+  width: 100%;
+  max-width: 337px;
+  background-color: #273E54;
+  border-radius: 20px;
+  color: #ffffff;
+  padding: 10px 30px;
+}
+
+

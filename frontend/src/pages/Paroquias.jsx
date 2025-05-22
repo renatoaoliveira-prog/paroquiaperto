@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ParoquiaCard from '../components/ParoquiaCard';
 import Mapa from '../components/Mapa';
 import '../styles/Paroquias.css';
+import json from '../assets/paroquias.json';
 
 // Lista de algumas paróquias do Porto
-const paroquiasPorto = [
-  { id: 1, nome: 'Sé do Porto', lat: 41.142517, lng: -8.61104, endereco: 'Largo da Sé' },
-  { id: 2, nome: 'Igreja de São Francisco', lat: 41.14311, lng: -8.61172, endereco: 'R. de São Francisco' },
-  { id: 3, nome: 'Paróquia de Cedofeita', lat: 41.15430, lng: -8.62804, endereco: 'Rua de Cedofeita' },
-  { id: 4, nome: 'Igreja de Santo Ildefonso', lat: 41.15130, lng: -8.61150, endereco: 'Praça da Batalha' },
-  { id: 5, nome: 'Igreja de Nossa Senhora da Conceição', lat: 41.14200, lng: -8.61350, endereco: 'Travessa dos Lóios' },
-];
+
+
+
 
 // Função Haversine para calcular distância em km
 function calcularDistancia(lat1, lon1, lat2, lon2) {
@@ -32,14 +29,14 @@ const Paroquias = () => {
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      setLista(paroquiasPorto);
+      setLista(json);
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         setCoords({ latitude, longitude });
-        const ordenadas = paroquiasPorto
+        const ordenadas = json
           .map(p => ({
             ...p,
             distancia: calcularDistancia(latitude, longitude, p.lat, p.lng)
@@ -49,7 +46,7 @@ const Paroquias = () => {
       },
       () => {
         // usuário negou ou erro => exibe ordem original
-        setLista(paroquiasPorto);
+        setLista(json);
       }
     );
   }, []);
@@ -60,7 +57,7 @@ const Paroquias = () => {
 
       {/* Mapa com Leaflet */}
       <div className="paroquias-mapa">
-        <Mapa paroquias={lista.length ? lista : paroquiasPorto} coords={coords} />
+        <Mapa paroquias={lista} coords={coords} />
       </div>
 
       {/* Lista de cartões */}
@@ -68,9 +65,23 @@ const Paroquias = () => {
         {lista.map(p => (
           <ParoquiaCard
             key={p.id}
-            nome={p.nome}
-            endereco={p.endereco}
-            distancia={p.distancia ? p.distancia.toFixed(1) : '-'}
+            dados={{
+              
+              distancia: p.distancia ? p.distancia.toFixed(1) : '-',
+              nomeIgreja: p.nomeIgreja,
+              nome: p.nome,
+              endereco: p.endereco,
+              descricao: p.descricao,
+              horarios: p.horarios,
+              contato: p.contato,
+              email: p.email,
+              site: p.site,
+              imagem: p.imagem,
+              instagram: p.instagram,
+              facebook: p.facebook,
+              whatsapp: p.whatsapp,
+            }}
+            
           />
         ))}
       </div>

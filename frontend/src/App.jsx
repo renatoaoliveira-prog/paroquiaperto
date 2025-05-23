@@ -6,7 +6,7 @@ import Paroquias from './pages/Paroquias';
 import Contato from './pages/Contato';
 import './styles/Navbar.css';
 import LoadingScreen from './components/LoadingScreen';
-import BackofficeLayout from './components/BackofficeLayout';
+import BackofficeLayout from './components/BackofficeLayout.jsx';
 import InserirParoquia from './pages/InserirParoquia';
 import InserirHorario from './pages/InserirHorario';
 import InserirEvento from './pages/InserirEvento';
@@ -39,12 +39,12 @@ function App() {
           <Route path="paroquias" element={<InserirParoquia />} />
           <Route path="horarios" element={<InserirHorario />} />
           <Route path="eventos" element={<InserirEvento />} />
-        
-          </Routes>
-        )}
-      </main>
-    </>
-  );
+        </Route>
+      </Routes>
+    )}
+  </main>
+</>
+);
 }
 
 export default App;

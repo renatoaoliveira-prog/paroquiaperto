@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Paroquias from './pages/Paroquias';
 import Contato from './pages/Contato';
+import Buscar from './pages/Buscar';
 import './assets/logo.png';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/paroquias" element={<Paroquias />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/Buscar" element={<Buscar />} />
           {/* outras rotas */}
         </Routes>
       </main>

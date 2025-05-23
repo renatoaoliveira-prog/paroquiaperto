@@ -6,6 +6,10 @@ import Paroquias from './pages/Paroquias';
 import Contato from './pages/Contato';
 import './styles/Navbar.css';
 import LoadingScreen from './components/LoadingScreen';
+import BackofficeLayout from './components/BackofficeLayout';
+import InserirParoquia from './pages/InserirParoquia';
+import InserirHorario from './pages/InserirHorario';
+import InserirEvento from './pages/InserirEvento';
 
 function App() {
   const location = useLocation();
@@ -30,6 +34,12 @@ function App() {
             <Route path="/paroquias" element={<Paroquias />} />
             <Route path="/contato" element={<Contato />} />
             {/* outras rotas */}
+            {/* Backoffice com layout e sub-rotas */}
+        <Route path="/backoffice" element={<BackofficeLayout />}>
+          <Route path="paroquias" element={<InserirParoquia />} />
+          <Route path="horarios" element={<InserirHorario />} />
+          <Route path="eventos" element={<InserirEvento />} />
+        
           </Routes>
         )}
       </main>

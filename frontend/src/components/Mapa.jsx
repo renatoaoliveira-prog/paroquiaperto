@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import cruzPino from '../assets/pino-cruz.png';
 
 // corrige ícones padrão do Leaflet no React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -10,6 +11,13 @@ L.Icon.Default.mergeOptions({
     'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+});
+
+const cruzIcon = new L.Icon({
+  iconUrl: cruzPino,
+  iconSize: [28, 40],
+  iconAnchor: [19, 45],
+  popupAnchor: [0, -40],
 });
 
 export default function Mapa({ paroquias, coords }) {
@@ -29,7 +37,7 @@ export default function Mapa({ paroquias, coords }) {
       scrollWheelZoom
     >
       <TileLayer
-        attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+        attribution='&copy; OpenStreetMap'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
@@ -42,7 +50,7 @@ export default function Mapa({ paroquias, coords }) {
 
       {/* Marcadores das paróquias */}
       {paroquias.map(p => (
-        <Marker key={p.id} position={[p.lat, p.lng]}>
+        <Marker key={p.id} position={[p.lat, p.lng]} icon={cruzIcon}>
           <Popup>
             <strong>{p.nome}</strong><br/>
             {p.endereco}<br/>

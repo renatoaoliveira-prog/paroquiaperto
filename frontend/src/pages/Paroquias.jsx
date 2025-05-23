@@ -4,10 +4,6 @@ import Mapa from '../components/Mapa';
 import '../styles/Paroquias.css';
 import json from '../assets/paroquias.json';
 
-// Lista de algumas paróquias do Porto
-
-
-
 
 // Função Haversine para calcular distância em km
 function calcularDistancia(lat1, lon1, lat2, lon2) {
